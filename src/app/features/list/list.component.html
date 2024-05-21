@@ -1,0 +1,20 @@
+<app-filter (search)="search($event)"></app-filter>
+<h1 *ngIf="attractions.length === 0">No se encuentran sitios Turísticos</h1>
+
+<div *ngIf="attractions.length !== 0">
+  <mat-card *ngFor="let attraction of attractions" class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ attraction.name | cardTitle: attraction.city.name }}</mat-card-title>
+        <mat-card-subtitle>Descripción: {{ attraction.description }}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="attraction.images[0]" >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container-button">
+        <button mat-button color="primary">Ver más</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

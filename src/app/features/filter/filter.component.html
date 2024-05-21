@@ -1,0 +1,24 @@
+<h1>
+  Buscar sitio turistico:
+</h1>
+<form [formGroup]="searchForm">
+  <mat-form-field style="margin: 10px;">
+    <mat-label>Seleccione un departamento</mat-label>
+    <mat-select formControlName="department"  (selectionChange)="selectDepartment($event)">
+      <mat-option *ngFor="let department of departments" [value]="department.id">{{department.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="cities.length > 0" style="margin: 10px;">
+    <mat-label>Seleccione una ciudad</mat-label>
+    <mat-select formControlName="city" (selectionChange)="selectCity($event)">
+      <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="attractions.length > 0" style="margin: 10px;">
+    <mat-label>Seleccione una ciudad</mat-label>
+    <mat-select formControlName="attraction" (selectionChange)="selectAttraction($event)">
+      <mat-option *ngFor="let attraction of attractions" [value]="attraction.id">{{attraction.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button color="primary" (click)="searchAttraction()">Buscar</button>
+</form>
